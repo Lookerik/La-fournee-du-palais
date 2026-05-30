@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Fournée du Palais - Boutique En Ligne</title>
+    <!-- Tailwind CSS para diseño moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #fcfbfa; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .product-card:hover .product-img { transform: scale(1.05); }
+        .product-img { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-stone-100 px-4 py-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-amber-900">La Fournée du Palais</a>
+            <div class="flex items-center gap-6">
+                <button onclick="toggleCart()" class="relative p-2 text-stone-700 hover:text-amber-700 transition">
+                    <i class="fa-solid fa-basket-shopping text-2xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HÉROE / BANNER PRINCIPAL -->
+    <header class="relative bg-stone-900 text-white py-24 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200');"></div>
+        <div class="relative max-w-4xl mx-auto text-center animate-fade-in">
+            <span class="text-amber-400 font-medium tracking-widest text-xs sm:text-sm uppercase block mb-3">Artesanía & Tradición</span>
+            <h1 class="font-serif text-4xl sm:text-6xl font-bold mb-6 leading-tight">Alta Panadería y Repostería</h1>
+            <p class="text-stone-200 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-light">Haz tu encargo online de forma segura, selecciona tu hora de recogida y disfruta de piezas recién horneadas sin esperas.</p>
+            <a href="#catalogo" class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-8 py-3.5 rounded-lg transition shadow-lg inline-block text-sm tracking-wide">Explorar el Catálogo</a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE PRODUCTOS / CATÁLOGO -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 py-16 sm:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+            <div>
+                <h2 class="font-serif text-3xl font-bold text-stone-900">Nuestras Creaciones</h2>
+                <div class="h-1 w-12 bg-amber-600 mt-2"></div>
+            </div>
+            <!-- Filtros de Categorías -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterCategory('todos')" class="cat-btn bg-amber-900 text-white px-4 py-2 rounded-full text-xs font-medium transition">Todos</button>
+                <button onclick="filterCategory('panes')" class="cat-btn bg-white border border-stone-200 text-stone-600 hover:border-amber-900 px-4 py-2 rounded-full text-xs font-medium transition">Panes de Masa Madre</button>
+                <button onclick="filterCategory('reposteria')" class="cat-btn bg-white border border-stone-200 text-stone-600 hover:border-amber-900 px-4 py-2 rounded-full text-xs font-medium transition">Bollería & Repostería</button>
+            </div>
+        </div>
+
+        <!-- Rejilla de Productos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+            <!-- Producto 1 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-slide-up" data-category="panes">
+                <div class="overflow-hidden h-64 bg-stone-100 relative">
+                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600" alt="Baguette Tradicional" class="product-img w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wider block mb-1">Panes de Masa Madre</span>
+                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">Baguette Tradicional de Versalles</h3>
+                    <p class="text-stone-500 text-sm mb-4 font-light">Corteza crujiente, miga alveolada y 24 horas de fermentación lenta natural.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-semibold text-stone-900">$3.50</span>
+                        <button onclick="addToCart('Baguette Tradicional', 3.50)" class="bg-stone-900 hover:bg-amber-800 text-white text-xs font-medium px-4 py-2.5 rounded-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Añadir al pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-slide-up" data-category="reposteria">
+                <div class="overflow-hidden h-64 bg-stone-100 relative">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600" alt="Croissant de Mantequilla" class="product-img w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wider block mb-1">Bollería & Repostería</span>
+                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">Croissant de Mantequilla d'Isigny</h3>
+                    <p class="text-stone-500 text-sm mb-4 font-light">Hojaldrado perfecto hecho a mano con mantequilla premium Denominación de Origen.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-semibold text-stone-900">$2.80</span>
+                        <button onclick="addToCart('Croissant de Mantequilla', 2.80)" class="bg-stone-900 hover:bg-amber-800 text-white text-xs font-medium px-4 py-2.5 rounded-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Añadir al pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-slide-up" data-category="reposteria">
+                <div class="overflow-hidden h-64 bg-stone-100 relative">
+                    <img src="https://images.unsplash.com/photo-1509456592764-5a948e3d10f9?q=80&w=600" alt="Éclair de Chocolate" class="product-img w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <span class="text-xs font-medium text-amber-700 uppercase tracking-wider block mb-1">Bollería & Repostería</span>
+                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">Éclair de Chocolate Belga Valrhona</h3>
+                    <p class="text-stone-500 text-sm mb-4 font-light">Pasta choux tradicional rellena de crema pastelera de chocolate sedosa.</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-lg font-semibold text-stone-900">$4.20</span>
+                        <button onclick="addToCart('Éclair de Chocolate', 4.20)" class="bg-stone-900 hover:bg-amber-800 text-white text-xs font-medium px-4 py-2.5 rounded-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Añadir al pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- PANEL LATERAL DEL CARRITO (SIDEBAR) -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 border-l border-stone-100 flex flex-col">
+        <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-amber-800 text-xl"></i>
+                <h3 class="font-serif text-xl font-bold text-stone-900">Tu Cesta de Encargo</h3>
+            </div>
+            <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-900 transition text-xl p-2">&times;</button>
+        </div>
+
+        <!-- Lista del carrito -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <p class="text-stone-400 text-sm text-center py-8">Tu cesta está vacía temporalmente.</p>
+        </div>
+
+        <!-- Resumen y Pasarela simulada integrada -->
+        <div class="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
+            <div class="flex justify-between items-center font-medium text-stone-900">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal" class="text-lg font-bold">$0.00</span>
+            </div>
+
+            <!-- Variables de Encargo e Indicador de tiempo Dinámico -->
+            <div class="space-y-2">
+                <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider">Hora de Recogida Estimada:</label>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-stone-800 flex items-center gap-3">
+                    <i class="fa-regular fa-clock text-amber-700 text-lg animate-pulse"></i>
+                    <div>
+                        <p class="text-xs font-medium" id="pickup-time-calc">Tiempo de preparación: 15-20 min</p>
+                        <p class="text-[11px] text-amber-800 font-light">Listo aprox. a las: <span id="clock-target" class="font-bold">--:--</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de apertura de Checkout -->
+            <button id="checkout-trigger-btn" onclick="openCheckoutForm()" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-medium py-3 rounded-lg transition text-sm tracking-wide shadow-md flex justify-center items-center gap-2 disabled:opacity-50 disabled:pointer-events-none" disabled>
+                Proceder al Pago con Tarjeta
+            </button>
+
+            <!-- Formulario Seguro Simulado (Desplegable interno) -->
+            <div id="secure-payment-box" class="hidden border-t border-stone-200 pt-4 space-y-3 animate-slide-up">
+                <p class="text-xs font-semibold text-stone-700 uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-emerald-600"></i> Pasarela de Pago Encriptada
+                </p>
+                <div class="space-y-2">
+                    <input type="text" placeholder="Número de Tarjeta (Simulado)" class="w-full border border-stone-200 rounded-lg p-2.5 text-xs focus:outline-amber-600" maxlength="19">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" placeholder="MM/AA" class="border border-stone-200 rounded-lg p-2.5 text-xs focus:outline-amber-600" maxlength="5">
+                        <input type="password" placeholder="CVV" class="border border-stone-200 rounded-lg p-2.5 text-xs focus:outline-amber-600" maxlength="4">
+                    </div>
+                </div>
+                <button onclick="processPaymentAction()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition text-xs tracking-wider uppercase shadow">
+                    Autorizar Transacción Seguro
+                </button>
+            </div>
+            
+            <div class="text-center">
+                <span class="text-[10px] text-stone-400 block"><i class="fa-solid fa-lock"></i> Conexión Encriptada TLS de Extremo a Extremo</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIONES TOAST -->
+    <div id="toast" class="fixed bottom-6 left-6 bg-stone-900 text-white text-xs px-4 py-3 rounded-lg shadow-2xl z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i> <span id="toast-msg">Elemento actualizado</span>
+    </div>
+
+    <script>
+        // LÓGICA DE LA TIENDA VIRTUAL
+        let cart = [];
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+            updatePickupTime();
+        }
+
+        function filterCategory(cat) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (cat === 'todos' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Estilo botones
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-amber-900', 'text-white');
+                btn.classList.add('bg-white', 'text-stone-600', 'border', 'border-stone-200');
+            });
+            event.currentTarget.classList.add('bg-amber-900', 'text-white');
+            event.currentTarget.classList.remove('bg-white', 'text-stone-600', 'border', 'border-stone-200');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+            showToast(`"${name}" añadido correctamente.`);
+        }
+
+        function changeQty(name, amount) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += amount;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const countBadge = document.getElementById('cart-count');
+            const subtotalText = document.getElementById('cart-subtotal');
+            const checkoutBtn = document.getElementById('checkout-trigger-btn');
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-stone-400 text-sm text-center py-8">Tu cesta está vacía temporalmente.</p>`;
+                countBadge.classList.add('hidden');
+                subtotalText.innerText = "$0.00";
+                checkoutBtn.disabled = true;
+                document.getElementById('secure-payment-box').classList.add('hidden');
+                return;
+            }
+
+            countBadge.classList.remove('hidden');
+            checkoutBtn.disabled = false;
+
+            let totalItems = 0;
+            let subtotal = 0;
+            container.innerHTML = "";
+
+            cart.forEach(item => {
+                totalItems += item.qty;
+                subtotal += (item.price * item.qty);
+
+                container.innerHTML += `
+                    <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+                        <div>
+                            <h4 class="font-serif font-bold text-stone-900 text-sm">${item.name}</h4>
+                            <p class="text-xs text-stone-500">$${item.price.toFixed(2)} c/u</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stone-100 rounded-md p-1">
+                            <button onclick="changeQty('${item.name}', -1)" class="w-6 h-6 text-xs text-stone-600 hover:bg-stone-200 rounded flex items-center justify-center font-bold">-</button>
+                            <span class="text-xs font-semibold text-stone-800 px-1">${item.qty}</span>
+                            <button onclick="changeQty('${item.name}', 1)" class="w-6 h-6 text-xs text-stone-600 hover:bg-stone-200 rounded flex items-center justify-center font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            countBadge.innerText = totalItems;
+            subtotalText.innerText = `$${subtotal.toFixed(2)}`;
+            updatePickupTime();
+        }
+
+        function updatePickupTime() {
+            if (cart.length === 0) return;
+            const now = new Date();
+            // Estimación base de 18 minutos para la panadería
+            now.setMinutes(now.getMinutes() + 18);
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            document.getElementById('clock-target').innerText = `${hours}:${minutes}`;
+        }
+
+        function openCheckoutForm() {
+            const paymentBox = document.getElementById('secure-payment-box');
+            paymentBox.classList.toggle('hidden');
+            paymentBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function processPaymentAction() {
+            alert("¡Éxito! Pago simulado procesado correctamente por el servidor de pruebas. Tu encargo está reservado en los hornos.");
+            cart = [];
+            renderCart();
+            toggleCart();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
