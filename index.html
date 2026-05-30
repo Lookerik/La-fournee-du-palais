@@ -63,7 +63,7 @@
         </div>
 
         <!-- Rejilla de Productos -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20" id="product-grid">
             <!-- Producto 1 -->
             <div class="product-card bg-white rounded-xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-slide-up" data-category="panes">
                 <div class="overflow-hidden h-64 bg-stone-100 relative">
@@ -119,6 +119,174 @@
             </div>
         </div>
     </main>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section class="bg-stone-50 py-16 px-4 border-t border-stone-100 sm:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-amber-700 font-medium tracking-widest text-xs uppercase block mb-2">Servicios Exclusivos</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">Nuestros Servicios</h2>
+                <div class="h-1 w-12 bg-amber-600 mx-auto mt-2"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Servicio 1: Movilidad Reducida -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border border-stone-100 flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600" alt="Espacio Accesible" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-stone-900/10"></div>
+                    </div>
+                    <div class="p-6 text-center flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                                <i class="fa-solid fa-wheelchair"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold mb-2">Acceso Adaptado</h3>
+                            <p class="text-stone-500 text-sm font-light leading-relaxed">Instalaciones 100% accesibles y rampa de acceso cómoda diseñada para personas con movilidad reducida.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 2: Terrasse -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border border-stone-100 flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600" alt="Nuestra Terraza" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-stone-900/10"></div>
+                    </div>
+                    <div class="p-6 text-center flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                                <i class="fa-solid fa-umbrella-beach"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold mb-2">La Terrasse</h3>
+                            <p class="text-stone-500 text-sm font-light leading-relaxed">Disfruta del aire libre y un café recién hecho en nuestra hermosa terraza exterior de estilo parisino.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Servicio 3: À Emporter -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 border border-stone-100 flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?q=80&w=600" alt="Para Llevar" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-stone-900/10"></div>
+                    </div>
+                    <div class="p-6 text-center flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-50 text-amber-800 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold mb-2">À Emporter</h3>
+                            <p class="text-stone-500 text-sm font-light leading-relaxed">¿Sin tiempo? Preparamos tus encargos favoritos de forma segura y veloz para que pases a recogerlos al instante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE DETALLES: HORARIOS, CONTACTO Y PAGOS -->
+    <section class="bg-white py-16 px-4 border-t border-stone-100 sm:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <!-- 1. Horarios de Apertura -->
+            <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 flex flex-col justify-between shadow-sm">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-stone-900 mb-6 flex items-center gap-3">
+                        <i class="fa-regular fa-clock text-amber-700"></i> Horarios de Apertura
+                    </h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex justify-between border-b border-stone-200/60 pb-2">
+                            <span class="font-medium text-stone-700">Lunes a Viernes</span>
+                            <span class="text-stone-600 font-semibold">07:30 AM - 08:30 PM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-stone-200/60 pb-2">
+                            <span class="font-medium text-stone-700">Sábados</span>
+                            <span class="text-stone-600 font-semibold">08:00 AM - 09:00 PM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-stone-200/60 pb-2">
+                            <span class="font-medium text-stone-700">Domingos</span>
+                            <span class="text-amber-700 font-semibold italic">Cerrado por descanso</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6 pt-4 border-t border-stone-200 text-xs text-stone-500 italic flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-amber-700"></i> Pan caliente saliendo cada hora.
+                </div>
+            </div>
+
+            <!-- 2. Información de Contacto -->
+            <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 shadow-sm">
+                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-address-book text-amber-700"></i> Contacto y Ubicación
+                </h3>
+                <ul class="space-y-6 text-sm">
+                    <li class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-amber-700 shadow-sm shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider font-semibold text-stone-400">Llámanos</span>
+                            <a href="tel:+33123456789" class="text-stone-800 font-semibold hover:text-amber-700 transition">+33 1 23 45 67 89</a>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-amber-700 shadow-sm shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider font-semibold text-stone-400">Correo Electrónico</span>
+                            <a href="mailto:palaisfournee@gmail.com" class="text-stone-800 font-semibold hover:text-amber-700 transition">palaisfournee@gmail.com</a>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-amber-700 shadow-sm shrink-0">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="block text-xs uppercase tracking-wider font-semibold text-stone-400">Nuestra Dirección</span>
+                            <span class="text-stone-800 font-semibold">15 Rue du Palais, 75001 París, Francia</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3. Métodos de Pago Disponibles (Options de Paiement) -->
+            <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100 flex flex-col justify-between shadow-sm">
+                <div>
+                    <h3 class="font-serif text-2xl font-bold text-stone-900 mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-credit-card text-amber-700"></i> Métodos de Pago
+                    </h3>
+                    <p class="text-stone-500 text-xs font-light mb-6 leading-relaxed">Aceptamos transacciones 100% encriptadas y seguras tanto en tienda física como online.</p>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-brands fa-cc-visa text-xl text-blue-800"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">Visa</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-brands fa-cc-mastercard text-xl text-red-600"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">Mastercard</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-brands fa-apple-pay text-xl text-black"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">Apple Pay</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-brands fa-google-pay text-xl text-blue-600"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">Google Pay</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-brands fa-paypal text-xl text-blue-900"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">PayPal</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-stone-200/60 shadow-sm flex flex-col items-center justify-center gap-1">
+                            <i class="fa-solid fa-money-bill-wave text-xl text-emerald-600"></i>
+                            <span class="text-[9px] font-semibold text-stone-600">Efectivo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[10px] text-stone-400 text-center mt-6">
+                    <i class="fa-solid fa-shield"></i> Procesamiento certificado SSL / HTTPS
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- PANEL LATERAL DEL CARRITO (SIDEBAR) -->
     <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 border-l border-stone-100 flex flex-col">
@@ -187,9 +355,18 @@
         <i class="fa-solid fa-circle-check text-emerald-400"></i> <span id="toast-msg">Elemento actualizado</span>
     </div>
 
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-900 mt-auto px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="font-serif text-lg font-semibold tracking-wide text-amber-500/80">La Fournée du Palais</span>
+            <p class="text-xs font-light text-stone-500">&copy; <span id="year"></span> Todos los derechos reservados. París, Francia.</p>
+        </div>
+    </footer>
+
     <script>
         // LÓGICA DE LA TIENDA VIRTUAL
         let cart = [];
+        document.getElementById('year').innerText = new Date().getFullYear();
 
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
