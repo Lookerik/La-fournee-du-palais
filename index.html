@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Maison Dorée – Boulangerie Artisanale</title>
-  <meta name="description" content="Boulangerie artesanal con tradición francesa. Panes, croissants y pasteles horneados con amor cada mañana." />
+  <title>La Fournée du Palais – Haute Boulangerie</title>
+  <meta name="description" content="Boulangerie artisanale avec tradition française. Panes, croissants y pasteles horneados con amor cada mañana." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* ══════════════════════════════════════════
        VARIABLES & RESET
-    ══════════════════════════════════════════ */
+       ══════════════════════════════════════════ */
     :root {
       --cream:       #fdf6ec;
       --warm-white:  #fffaf3;
@@ -29,7 +31,7 @@
       --blush:       #e8c5a8;
       --text-dark:   #2e1a0e;
       --text-mid:    #6b4226;
-      --shadow-warm: rgba(90, 50, 20, 0.18);
+      --shadow-warm: rgba(90, 50, 20, 0.12);
       --font-display: 'Playfair Display', Georgia, serif;
       --font-script:  'Dancing Script', cursive;
       --font-body:    'Lato', sans-serif;
@@ -54,17 +56,17 @@
 
     /* ══════════════════════════════════════════
        SCROLLBAR
-    ══════════════════════════════════════════ */
+       ══════════════════════════════════════════ */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--cream); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
     /* ══════════════════════════════════════════
        REUSABLE COMPONENTS
-    ══════════════════════════════════════════ */
+       ══════════════════════════════════════════ */
     .section-label {
       font-family: var(--font-script);
-      font-size: 1.15rem;
+      font-size: 1.4rem;
       color: var(--gold);
       letter-spacing: 0.05em;
       display: block;
@@ -80,12 +82,6 @@
     .section-title em {
       font-style: italic;
       color: var(--gold-dark);
-    }
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--text-mid);
-      max-width: 540px;
-      line-height: 1.75;
     }
     .btn {
       display: inline-flex;
@@ -122,66 +118,10 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(200, 150, 46, 0.55);
     }
-    .btn-outline {
-      background: transparent;
-      color: var(--gold);
-      border: 2px solid var(--gold);
-    }
-    .btn-outline:hover {
-      background: var(--gold);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-    .btn-dark {
-      background: var(--brown);
-      color: var(--cream);
-    }
-    .btn-dark:hover {
-      background: var(--brown-dark);
-      transform: translateY(-3px);
-    }
-
-    /* scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-    /* decorative divider */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1rem 0;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
-    }
-    .divider span { font-size: 1.2rem; }
 
     /* ══════════════════════════════════════════
        NAVBAR
-    ══════════════════════════════════════════ */
+       ══════════════════════════════════════════ */
     #navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -212,6 +152,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
+      color: white;
       box-shadow: 0 4px 12px rgba(200,150,46,0.35);
       transition: transform 0.3s ease;
     }
@@ -229,7 +170,7 @@
     }
     .nav-logo .logo-sub {
       font-family: var(--font-script);
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       color: var(--gold);
     }
 
@@ -261,7 +202,35 @@
     .nav-links a:hover { color: var(--gold-dark); }
     .nav-links a:hover::after { width: 100%; }
 
-    .nav-cta { margin-left: 1rem; }
+    .nav-cta-btn {
+      background: none;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      color: var(--brown);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+      padding: 5px;
+    }
+    .nav-cta-btn:hover {
+      color: var(--gold);
+    }
+    .cart-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background-color: var(--terracotta);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-badge.hidden { display: none; }
 
     /* hamburger */
     .hamburger {
@@ -301,6 +270,7 @@
       transition: opacity 0.3s ease;
     }
     .mobile-menu.open {
+      display: flex;
       opacity: 1;
       pointer-events: all;
     }
@@ -315,7 +285,7 @@
 
     /* ══════════════════════════════════════════
        HERO
-    ══════════════════════════════════════════ */
+       ══════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
       position: relative;
@@ -336,7 +306,7 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(60px);
-      opacity: 0.45;
+      opacity: 0.35;
       animation: blobFloat 8s ease-in-out infinite alternate;
     }
     .blob-1 {
@@ -351,38 +321,9 @@
       bottom: -80px; left: -80px;
       animation-delay: 3s;
     }
-    .blob-3 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, #c8962e33, transparent 70%);
-      top: 30%; left: 20%;
-      animation-delay: 1.5s;
-    }
     @keyframes blobFloat {
       0%   { transform: translate(0, 0) scale(1); }
       100% { transform: translate(30px, -30px) scale(1.1); }
-    }
-
-    /* floating pastry icons */
-    .floating-icons {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .fi {
-      position: absolute;
-      font-size: 2.5rem;
-      opacity: 0.12;
-      animation: fiFloat 6s ease-in-out infinite alternate;
-    }
-    .fi:nth-child(1)  { top:10%; left:5%;   animation-delay:0s;   font-size: 3rem; }
-    .fi:nth-child(2)  { top:20%; right:8%;  animation-delay:1s;   font-size: 2rem; }
-    .fi:nth-child(3)  { top:65%; left:3%;   animation-delay:2s;   font-size: 2.5rem; }
-    .fi:nth-child(4)  { top:75%; right:5%;  animation-delay:0.5s; font-size: 3.5rem; }
-    .fi:nth-child(5)  { top:45%; left:85%;  animation-delay:3s;   font-size: 2rem; }
-    .fi:nth-child(6)  { top:85%; left:50%;  animation-delay:1.5s; font-size: 2rem; }
-    @keyframes fiFloat {
-      0%   { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-20px) rotate(8deg); }
     }
 
     .hero-content {
@@ -399,19 +340,17 @@
       border-radius: 50px;
       padding: 0.4rem 1.2rem;
       font-family: var(--font-script);
-      font-size: 1.05rem;
+      font-size: 1.25rem;
       color: var(--gold-dark);
       margin-bottom: 1.5rem;
-      animation: fadeSlideDown 0.8s ease forwards;
     }
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.1;
       color: var(--brown);
       margin-bottom: 0.5rem;
-      animation: fadeSlideUp 0.9s ease 0.2s both;
     }
     .hero-title span {
       display: block;
@@ -422,181 +361,21 @@
       background-clip: text;
     }
     .hero-slogan {
-      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--text-mid);
       margin: 1.2rem auto 2.2rem;
-      max-width: 520px;
+      max-width: 540px;
       line-height: 1.7;
-      animation: fadeSlideUp 0.9s ease 0.45s both;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeSlideUp 0.9s ease 0.65s both;
-    }
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: fadeIn 1.2s ease 1.2s both;
-    }
-    .hero-scroll .arrow {
-      width: 24px; height: 24px;
-      border-right: 2px solid var(--gold);
-      border-bottom: 2px solid var(--gold);
-      transform: rotate(45deg);
-      animation: bounce 1.5s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: rotate(45deg) translateY(0); }
-      50%       { transform: rotate(45deg) translateY(6px); }
-    }
-    @keyframes fadeSlideDown {
-      from { opacity:0; transform: translateY(-20px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    @keyframes fadeSlideUp {
-      from { opacity:0; transform: translateY(30px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity:0; }
-      to   { opacity:1; }
     }
 
     /* ══════════════════════════════════════════
-       ABOUT / HISTORIA
-    ══════════════════════════════════════════ */
-    #about {
-      padding: 7rem 2rem;
-      background: var(--warm-white);
-      position: relative;
-      overflow: hidden;
-    }
-    #about::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--gold-light), var(--terracotta), var(--gold-light));
-    }
-
-    .about-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-img-frame {
-      width: 100%;
-      aspect-ratio: 4/5;
-      border-radius: 20px 80px 20px 80px;
-      background: linear-gradient(145deg, #e8c88a, #c8962e, #8b5e34);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8rem;
-      box-shadow: 12px 12px 40px var(--shadow-warm);
-      position: relative;
-      overflow: hidden;
-    }
-    .about-img-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
-    }
-    .about-badge-float {
-      position: absolute;
-      bottom: -1.5rem;
-      right: -1.5rem;
-      background: var(--gold);
-      color: #fff;
-      border-radius: 50%;
-      width: 120px; height: 120px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      text-align: center;
-      line-height: 1.2;
-      box-shadow: 0 8px 24px rgba(200,150,46,0.4);
-      font-weight: 700;
-      animation: rotateBadge 12s linear infinite;
-    }
-    .about-badge-float .year { font-size: 2rem; }
-    .about-badge-float .since { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
-    @keyframes rotateBadge {
-      0%   { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .about-text { display: flex; flex-direction: column; gap: 1.5rem; }
-    .about-text p { color: var(--text-mid); line-height: 1.8; font-size: 1.05rem; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .stat-box {
-      text-align: center;
-      padding: 1.2rem 0.8rem;
-      border-radius: var(--radius);
-      background: var(--cream);
-      border: 1px solid rgba(200,150,46,0.2);
-      transition: var(--transition);
-    }
-    .stat-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px var(--shadow-warm);
-      border-color: var(--gold-light);
-    }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--gold-dark);
-    }
-    .stat-lbl { font-size: 0.8rem; color: var(--text-mid); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
-
-    /* ══════════════════════════════════════════
-       MENU / TIENDA
-    ══════════════════════════════════════════ */
+       CATÁLOGO / TIENDA
+       ══════════════════════════════════════════ */
     #menu {
       padding: 7rem 2rem;
       background: linear-gradient(180deg, var(--cream) 0%, #f5e6cb 100%);
       position: relative;
     }
-    #menu::before {
-      content: '🥐';
-      position: absolute;
-      font-size: 15rem;
-      opacity: 0.04;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
     .menu-header {
       text-align: center;
       max-width: 600px;
@@ -631,12 +410,12 @@
       box-shadow: 0 4px 14px rgba(200,150,46,0.35);
     }
 
-    /* product grid */
+    /* products grid */
     .products-grid {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
       gap: 2rem;
     }
     .product-card {
@@ -646,37 +425,38 @@
       box-shadow: 0 4px 20px var(--shadow-warm);
       transition: var(--transition);
       border: 1px solid rgba(200,150,46,0.1);
-      animation: cardPop 0.5s ease both;
+      display: flex;
+      flex-direction: column;
     }
     .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 16px 40px rgba(90,50,20,0.22);
-    }
-    @keyframes cardPop {
-      from { opacity:0; transform: scale(0.92); }
-      to   { opacity:1; transform: scale(1); }
+      box-shadow: 0 16px 40px rgba(90,50,20,0.18);
     }
     .product-card.hidden { display: none; }
 
-    .card-img {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      position: relative;
+    .card-img-container {
+      height: 220px;
       overflow: hidden;
+      position: relative;
     }
-    .card-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-cover: cover;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
-    .card-img .card-emoji { position: relative; z-index: 1; transition: transform 0.3s ease; }
-    .product-card:hover .card-emoji { transform: scale(1.15) rotate(-5deg); }
+    .product-card:hover .card-img-container img {
+      transform: scale(1.05);
+    }
 
-    .card-body { padding: 1.4rem 1.6rem 1.6rem; }
+    .card-body {
+      padding: 1.4rem 1.6rem 1.6rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     .card-tag {
       display: inline-block;
       padding: 0.2rem 0.7rem;
@@ -686,11 +466,10 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 0.6rem;
+      width: max-content;
     }
     .tag-bread   { background: #f0e0c0; color: #8b5e34; }
     .tag-pastry  { background: #f9d8cc; color: #a0411e; }
-    .tag-cake    { background: #f8d8e8; color: #9a3060; }
-    .tag-special { background: #d8ecd0; color: #3a6e28; }
 
     .card-name {
       font-family: var(--font-display);
@@ -699,26 +478,26 @@
       color: var(--brown);
       margin-bottom: 0.4rem;
     }
-    .card-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1rem; }
+    .card-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1.2rem; }
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-top: auto;
     }
     .card-price {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 900;
       color: var(--gold-dark);
     }
-    .card-price small { font-size: 0.85rem; font-weight: 400; color: var(--text-mid); }
     .card-add {
       width: 40px; height: 40px;
       border-radius: 50%;
       background: var(--gold);
       border: none;
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -726,192 +505,456 @@
       transition: var(--transition);
       box-shadow: 0 4px 12px rgba(200,150,46,0.35);
     }
-    .card-add:hover { background: var(--gold-dark); transform: scale(1.12) rotate(90deg); }
-
-    /* payment methods */
-    .payment-section {
-      max-width: 700px;
-      margin: 4rem auto 0;
-      text-align: center;
-      padding: 2.5rem;
-      background: var(--warm-white);
-      border-radius: 20px;
-      box-shadow: 0 4px 20px var(--shadow-warm);
-      border: 1px solid rgba(200,150,46,0.15);
-    }
-    .payment-section h3 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: var(--brown);
-      margin-bottom: 1.5rem;
-    }
-    .payment-methods {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .pay-method {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.3rem;
-      border-radius: 12px;
-      background: var(--cream);
-      border: 1.5px solid rgba(200,150,46,0.25);
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--brown);
-      transition: var(--transition);
-      cursor: default;
-    }
-    .pay-method:hover {
-      border-color: var(--gold);
-      background: rgba(200,150,46,0.08);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px var(--shadow-warm);
-    }
-    .pay-method .pay-icon { font-size: 1.4rem; }
+    .card-add:hover { background: var(--gold-dark); transform: scale(1.12); }
 
     /* ══════════════════════════════════════════
-       RESERVATIONS
-    ══════════════════════════════════════════ */
-    #reservas {
+       SERVICES SECTION
+       ══════════════════════════════════════════ */
+    #services {
       padding: 7rem 2rem;
-      background: linear-gradient(145deg, var(--brown) 0%, var(--brown-dark) 100%);
-      position: relative;
+      background: var(--warm-white);
+    }
+    .services-grid {
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(200,150,46,0.1);
+      box-shadow: 0 4px 15px var(--shadow-warm);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-img {
+      height: 180px;
       overflow: hidden;
     }
-    #reservas::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8962e' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .reservas-inner {
+    .service-body {
+      padding: 2rem 1.5rem;
+    }
+    .service-icon {
+      width: 50px; height: 50px;
+      background: rgba(200,150,46,0.15);
+      color: var(--gold-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -45px auto 1rem;
+      font-size: 1.3rem;
+      border: 2px solid var(--warm-white);
+      position: relative;
+      z-index: 2;
+    }
+    .service-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+    }
+    .service-body p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       HORARIOS & METODOS DE PAGO
+       ══════════════════════════════════════════ */
+    #info-boutique {
+      padding: 7rem 2rem;
+      background: var(--cream);
+    }
+    .info-boutique-inner {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 5rem;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
     }
-    .reservas-info { color: var(--cream); }
-    .reservas-info .section-label { color: var(--gold-light); }
-    .reservas-info .section-title { color: var(--cream); }
-    .reservas-info .section-title em { color: var(--gold-light); }
-    .reservas-info p { color: rgba(253,246,236,0.75); line-height: 1.8; margin-top: 1rem; }
-
-    .reservas-features {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 2rem;
+    .info-box {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 6px 25px var(--shadow-warm);
+      border: 1px solid rgba(200,150,46,0.15);
     }
-    .res-feature {
+    .info-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--brown);
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      color: var(--cream);
+      gap: 0.75rem;
+      border-b: 1px solid rgba(200,150,46,0.1);
+      padding-bottom: 0.75rem;
     }
-    .res-feature .icon {
-      width: 44px; height: 44px;
-      background: rgba(200,150,46,0.2);
-      border-radius: 12px;
+    .info-box h3 i {
+      color: var(--gold);
+    }
+
+    /* Listas específicas */
+    .horarios-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .horario-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed rgba(200,150,46,0.15);
+      padding-bottom: 0.5rem;
+    }
+    .horario-row span:first-child {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .horario-row span:last-child {
+      color: var(--text-mid);
+    }
+    .horario-row.closed span:last-child {
+      color: var(--terracotta);
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .paiments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.8rem;
+    }
+    .paiment-card {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--brown);
+      border: 1px solid rgba(200,150,46,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+    .paiment-card i {
+      font-size: 1.3rem;
+      color: var(--gold-dark);
+    }
+    .paiment-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ══════════════════════════════════════════
+       THREE CONTACT BOXES (image_4c043e.png)
+       ══════════════════════════════════════════ */
+    #contact-cards {
+      padding: 5rem 2rem;
+      background: var(--warm-white);
+    }
+    .contact-grid-boxes {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .contact-card-box {
+      background: #fdfdfd;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .contact-card-box:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+      border-color: var(--gold-light);
+    }
+    .contact-box-icon {
+      font-size: 1.8rem;
+      color: #9e9e9e;
+      margin-bottom: 1.2rem;
+      transition: color 0.3s;
+    }
+    .contact-card-box:hover .contact-box-icon {
+      color: var(--gold);
+    }
+    .contact-box-title {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 1rem;
+    }
+    .contact-box-val {
+      font-size: 0.95rem;
+      color: #757575;
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       CART PANEL (SIDEBAR) & CHECKOUT
+       ══════════════════════════════════════════ */
+    #cart-sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: 100%;
+      max-width: 450px;
+      background: var(--warm-white);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+      z-index: 1050;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      border-l: 1px solid rgba(200,150,46,0.1);
+    }
+    #cart-sidebar.open {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 1.5rem;
+      background: var(--cream);
+      border-b: 1px solid rgba(200,150,46,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-mid);
+    }
+    .cart-items-container {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(200,150,46,0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .cart-item-details h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--brown);
+    }
+    .cart-item-details p {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+    .cart-qty-ctrl {
+      display: flex;
+      align-items: center;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 0.25rem;
+      gap: 0.5rem;
+    }
+    .cart-qty-ctrl button {
+      border: none;
+      background: white;
+      width: 24px; height: 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--brown);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      border: 1px solid rgba(200,150,46,0.3);
     }
-    .res-feature .text strong { display: block; font-weight: 700; margin-bottom: 0.15rem; }
-    .res-feature .text span { font-size: 0.88rem; opacity: 0.7; }
-
-    /* form */
-    .reservas-form {
-      background: var(--warm-white);
-      border-radius: 24px;
-      padding: 2.5rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    }
-    .reservas-form h3 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--brown);
-      margin-bottom: 0.3rem;
-    }
-    .reservas-form .form-sub {
-      font-size: 0.88rem;
-      color: var(--text-mid);
-      margin-bottom: 1.8rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group {
+    .cart-footer {
+      padding: 1.5rem;
+      background: var(--cream);
+      border-t: 1px solid rgba(200,150,46,0.1);
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
+      gap: 1rem;
     }
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+    .cart-subtotal-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.15rem;
+      font-weight: bold;
       color: var(--brown);
-      text-transform: uppercase;
     }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 0.85rem 1rem;
+    .pickup-indicator {
+      background: rgba(200,150,46,0.1);
+      border: 1px solid rgba(200,150,46,0.25);
       border-radius: 10px;
-      border: 1.5px solid rgba(200,150,46,0.3);
-      background: var(--cream);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .pickup-indicator i {
+      color: var(--gold-dark);
+      font-size: 1.2rem;
+    }
+    .pickup-indicator span {
+      font-size: 0.82rem;
+      line-height: 1.4;
       color: var(--text-dark);
-      transition: border-color 0.25s, box-shadow 0.25s;
-      outline: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(200,150,46,0.15);
-    }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-submit {
-      width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      margin-top: 0.5rem;
     }
 
-    /* success msg */
-    .form-success {
+    .checkout-form {
       display: none;
-      text-align: center;
-      padding: 2rem;
+      border-t: 1px solid rgba(200,150,46,0.15);
+      padding-top: 1rem;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    .form-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .form-success h4 {
+    .checkout-form.active {
+      display: flex;
+    }
+    .checkout-form input {
+      padding: 0.65rem;
+      border-radius: 6px;
+      border: 1px solid rgba(200,150,46,0.3);
+      font-size: 0.85rem;
+      outline: none;
+      background: var(--warm-white);
+    }
+    .checkout-form input:focus {
+      border-color: var(--gold);
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER & LEGAL MODALS
+       ══════════════════════════════════════════ */
+    #footer {
+      background: var(--brown-dark);
+      color: var(--cream);
+      padding: 4rem 2rem 2rem;
+      border-t: 3px solid var(--gold);
+    }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 1.5rem;
+      width: 100%;
+    }
+    .footer-links button {
+      background: none;
+      border: none;
+      color: rgba(253,246,236,0.65);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .footer-links button:hover {
+      color: var(--gold-light);
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(253,246,236,0.4);
+    }
+
+    /* MODAL POPUPS */
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .legal-modal.open {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--warm-white);
+      max-width: 600px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid rgba(200,150,46,0.15);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-mid);
+    }
+    .modal-content h3 {
       font-family: var(--font-display);
       font-size: 1.5rem;
       color: var(--brown);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      border-b: 1px solid rgba(200,150,46,0.1);
+      padding-bottom: 0.5rem;
     }
-    .form-success p { color: var(--text-mid); }
+    .modal-body {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .modal-body p {
+      margin-bottom: 1rem;
+    }
 
-    /* ══════════════════════════════════════════
-       TOAST NOTIFICATION
-    ══════════════════════════════════════════ */
-    .toast {
+    /* TOAST NOTIFICATION */
+    #toast {
       position: fixed;
       bottom: 2rem;
-      right: 2rem;
+      left: 2rem;
       background: var(--brown);
       color: var(--cream);
       padding: 1rem 1.5rem;
@@ -919,865 +962,576 @@
       font-size: 0.9rem;
       font-weight: 700;
       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      z-index: 9999;
+      z-index: 3000;
       display: flex;
       align-items: center;
       gap: 0.75rem;
       transform: translateY(100px);
       opacity: 0;
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast .toast-icon { font-size: 1.3rem; }
-
-    /* ══════════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════════ */
-    #footer {
-      background: var(--brown-dark);
-      color: var(--cream);
-      padding: 5rem 2rem 2rem;
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
     }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-      gap: 3rem;
-      margin-bottom: 4rem;
-    }
-    .footer-brand .logo-name {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--cream);
-      margin-bottom: 0.3rem;
-    }
-    .footer-brand .logo-sub { font-family: var(--font-script); color: var(--gold-light); font-size: 1rem; }
-    .footer-brand p {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: rgba(253,246,236,0.65);
-    }
-    .footer-socials {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-    .social-btn {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      transition: var(--transition);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .social-btn:hover {
-      background: var(--gold);
-      transform: translateY(-3px);
-      border-color: var(--gold);
-    }
-
-    .footer-col h4 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
+    #toast i {
       color: var(--gold-light);
-      margin-bottom: 1.2rem;
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 0.7rem; }
-    .footer-col ul li a {
-      font-size: 0.9rem;
-      color: rgba(253,246,236,0.65);
-      transition: color 0.2s;
-    }
-    .footer-col ul li a:hover { color: var(--gold-light); }
-
-    /* contact items */
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-    }
-    .contact-item .ci-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: rgba(200,150,46,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      transition: var(--transition);
-    }
-    .contact-item:hover .ci-icon {
-      background: var(--gold);
-    }
-    .contact-item .ci-text {
-      display: flex;
-      flex-direction: column;
-    }
-    .contact-item .ci-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(253,246,236,0.45);
-      margin-bottom: 0.15rem;
-    }
-    .contact-item .ci-val {
-      font-size: 0.9rem;
-      color: var(--cream);
-      transition: color 0.2s;
-    }
-    .contact-item a:hover .ci-val { color: var(--gold-light); }
-
-    /* horarios */
-    .horarios { display: flex; flex-direction: column; gap: 0.5rem; }
-    .horario-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      color: rgba(253,246,236,0.7);
-    }
-    .horario-row .hor-day { font-weight: 700; }
-    .horario-row .hor-time { color: var(--gold-light); }
-    .horario-row.today {
-      color: var(--cream);
-      background: rgba(200,150,46,0.1);
-      padding: 0.5rem 0.6rem;
-      border-radius: 6px;
-      border-bottom: none;
     }
 
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.82rem;
-      color: rgba(253,246,236,0.4);
-    }
-    .footer-bottom strong { color: var(--gold-light); }
-
-    /* ══════════════════════════════════════════
-       BACK TO TOP
-    ══════════════════════════════════════════ */
-    .back-top {
-      position: fixed;
-      bottom: 2rem;
-      left: 2rem;
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: #fff;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 20px rgba(200,150,46,0.45);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: var(--transition);
-      z-index: 800;
-    }
-    .back-top.visible { opacity: 1; transform: translateY(0); }
-    .back-top:hover { background: var(--gold-dark); transform: translateY(-3px) !important; }
-
-    /* ══════════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════════ */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      .about-inner     { grid-template-columns: 1fr; gap: 3rem; }
-      .about-img-frame { aspect-ratio: 16/9; font-size: 6rem; }
-      .reservas-inner  { grid-template-columns: 1fr; gap: 3rem; }
-      .footer-inner    { grid-template-columns: 1fr 1fr; }
-      .form-row        { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 680px) {
-      #navbar { padding: 0.85rem 1.25rem; }
-      .nav-links, .nav-cta { display: none; }
+      .info-boutique-inner { grid-template-columns: 1fr; }
+      .contact-grid-boxes { grid-template-columns: 1fr; }
       .hamburger { display: flex; }
-      .mobile-menu { display: flex; }
-      .hero-title  { font-size: clamp(2.5rem, 10vw, 4rem); }
-      .footer-inner { grid-template-columns: 1fr; }
-      .about-stats  { grid-template-columns: 1fr 1fr; }
-      .products-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 380px) {
-      .hero-btns { flex-direction: column; align-items: center; }
-      .about-stats { grid-template-columns: 1fr; }
-      .payment-methods { flex-direction: column; align-items: center; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════ NAVBAR ══════════════ -->
+  <!-- NAVBAR -->
   <nav id="navbar">
-    <a href="#hero" class="nav-logo">
-      <div class="logo-icon">🥐</div>
+    <div class="nav-logo">
+      <div class="logo-icon"><i class="fa-solid fa-croissant"></i></div>
       <div class="logo-text">
-        <span class="logo-name">La Maison Dorée</span>
-        <span class="logo-sub">Boulangerie Artisanale</span>
+        <span class="logo-name">La Fournée du Palais</span>
+        <span class="logo-sub">Artisan Boulanger</span>
       </div>
-    </a>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#hero">Accueil</a>
+      <a href="#menu">Notre Boutique</a>
+      <a href="#services">Services</a>
+      <a href="#info-boutique">Horaires</a>
+      <a href="#contact-cards">Contact</a>
+    </div>
 
-    <ul class="nav-links">
-      <li><a href="#hero">Inicio</a></li>
-      <li><a href="#about">Historia</a></li>
-      <li><a href="#menu">Menú</a></li>
-      <li><a href="#reservas">Reservas</a></li>
-      <li><a href="#footer">Contacto</a></li>
-    </ul>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <button onclick="toggleCart()" class="nav-cta-btn">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span id="cart-count" class="cart-badge hidden">0</span>
+      </button>
 
-    <a href="#reservas" class="btn btn-primary nav-cta">Reservar Mesa</a>
-
-    <!-- hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
+      <button class="hamburger" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
 
-  <!-- mobile menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#hero"     onclick="closeMenu()">Inicio</a>
-    <a href="#about"    onclick="closeMenu()">Historia</a>
-    <a href="#menu"     onclick="closeMenu()">Menú</a>
-    <a href="#reservas" onclick="closeMenu()">Reservas</a>
-    <a href="#footer"   onclick="closeMenu()">Contacto</a>
-    <a href="#reservas" onclick="closeMenu()" class="btn btn-primary">Reservar Mesa</a>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#hero" onclick="toggleMobileMenu()">Accueil</a>
+    <a href="#menu" onclick="toggleMobileMenu()">Notre Boutique</a>
+    <a href="#services" onclick="toggleMobileMenu()">Services</a>
+    <a href="#info-boutique" onclick="toggleMobileMenu()">Horaires</a>
+    <a href="#contact-cards" onclick="toggleMobileMenu()">Contact</a>
   </div>
 
-  <!-- ══════════════ HERO ══════════════ -->
+  <!-- HERO SECTION -->
   <section id="hero">
     <div class="hero-blobs">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
     </div>
-    <div class="floating-icons">
-      <span class="fi">🥖</span>
-      <span class="fi">🎂</span>
-      <span class="fi">🍞</span>
-      <span class="fi">🥨</span>
-      <span class="fi">🍰</span>
-      <span class="fi">🥐</span>
-    </div>
-
+    
     <div class="hero-content">
-      <div class="hero-badge">✦ Depuis 1987 – París & Madrid ✦</div>
-      <h1 class="hero-title">
-        L'art du pain
-        <span>artisanal</span>
-      </h1>
-      <p class="hero-slogan">
-        Cada madrugada, nuestros maestros panaderos despiertan antes que el sol
-        para hornear los sabores que hacen especiales tus mañanas.
-      </p>
-      <div class="hero-btns">
-        <a href="#menu" class="btn btn-primary">🥐 Ver nuestro menú</a>
-        <a href="#reservas" class="btn btn-outline">Reservar mesa</a>
-      </div>
-    </div>
-
-    <div class="hero-scroll">
-      <span>Descubrir</span>
-      <div class="arrow"></div>
+      <span class="hero-badge">Artisanat & Tradition Française</span>
+      <h1 class="hero-title">Haute Boulangerie <span>& Pâtisserie</span></h1>
+      <p class="hero-slogan">L'excellence de la tradition dans chaque bouchée. Commandez vos créations préférées en ligne et récupérez-les à l'heure de votre choix.</p>
+      <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-store"></i> Voir la boutique</a>
     </div>
   </section>
 
-  <!-- ══════════════ ABOUT ══════════════ -->
-  <section id="about">
-    <div class="about-inner">
-      <!-- visual -->
-      <div class="about-visual reveal-left">
-        <div class="about-img-frame">🍞</div>
-        <div class="about-badge-float">
-          <span class="year">37</span>
-          <span class="since">años de</span>
-          <span class="since">tradición</span>
-        </div>
-      </div>
-
-      <!-- text -->
-      <div class="about-text reveal-right">
-        <span class="section-label">✦ Nuestra historia</span>
-        <h2 class="section-title">
-          Tradición panadera<br/>desde <em>1987</em>
-        </h2>
-        <div class="divider"><span>🌾</span></div>
-        <p>
-          Todo comenzó cuando Henri Dubois, maestro boulanger parisino, cruzó los Pirineos 
-          con una maleta llena de recetas y el sueño de compartir el auténtico sabor del pan 
-          francés. Su horno de leña original aún sigue encendido cada madrugada.
-        </p>
-        <p>
-          Hoy, la tercera generación de la familia continúa con la misma filosofía: 
-          <strong>ingredientes de primera, técnicas centenarias y un amor incondicional 
-          por el oficio</strong>. Cada pieza que sale de nuestro horno es una pequeña obra de arte.
-        </p>
-
-        <div class="about-stats">
-          <div class="stat-box reveal">
-            <div class="stat-num">+120</div>
-            <div class="stat-lbl">Recetas únicas</div>
-          </div>
-          <div class="stat-box reveal" style="transition-delay:0.1s">
-            <div class="stat-num">4:30</div>
-            <div class="stat-lbl">Primer horneado</div>
-          </div>
-          <div class="stat-box reveal" style="transition-delay:0.2s">
-            <div class="stat-num">100%</div>
-            <div class="stat-lbl">Artesanal</div>
-          </div>
-        </div>
-
-        <a href="#menu" class="btn btn-dark" style="margin-top:1.5rem; align-self:flex-start">
-          Ver productos →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════ MENU ══════════════ -->
+  <!-- CATALOG SECTION -->
   <section id="menu">
-    <div class="menu-header reveal">
-      <span class="section-label">✦ La carte</span>
-      <h2 class="section-title">Nuestros <em>productos</em></h2>
-      <p class="section-sub" style="margin:1rem auto 0">
-        Horneados cada mañana con harina de origen certificado, masa madre propia 
-        y el tiempo que merecen. Sin prisas, sin aditivos.
-      </p>
+    <div class="menu-header">
+      <span class="section-label">Le Goût Unique</span>
+      <h2 class="section-title">Nos <em>Créations</em></h2>
     </div>
 
-    <!-- filter tabs -->
-    <div class="filter-tabs reveal">
-      <button class="tab-btn active" data-filter="all">Todo</button>
-      <button class="tab-btn" data-filter="bread">🍞 Panes</button>
-      <button class="tab-btn" data-filter="pastry">🥐 Viennoiserie</button>
-      <button class="tab-btn" data-filter="cake">🎂 Pasteles</button>
-      <button class="tab-btn" data-filter="special">⭐ Especiales</button>
+    <!-- Filtros -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterCategory('todos')">Tous</button>
+      <button class="tab-btn" onclick="filterCategory('panes')">Pains de Tradition</button>
+      <button class="tab-btn" onclick="filterCategory('reposteria')">Viennoiserie & Pâtisserie</button>
     </div>
 
-    <!-- product grid -->
-    <div class="products-grid" id="productsGrid">
-
-      <div class="product-card" data-category="bread">
-        <div class="card-img" style="background:linear-gradient(145deg,#f5e6c0,#e8c878)">
-          <span class="card-emoji">🥖</span>
+    <!-- Rejilla de productos -->
+    <div class="products-grid">
+      <!-- Producto 1 -->
+      <div class="product-card" data-category="panes">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600" alt="Baguette Rétro de Versailles" />
         </div>
         <div class="card-body">
-          <span class="card-tag tag-bread">Pan</span>
-          <div class="card-name">Baguette Tradition</div>
-          <div class="card-desc">Masa madre, fermentación lenta 18h, corteza crujiente con miga abierta y alveolada.</div>
+          <div>
+            <span class="card-tag tag-bread">Pains</span>
+            <h3 class="card-name">Baguette Rétro de Versailles</h3>
+            <p class="card-desc">Croûte croustillante, mie alvéolée et 24 heures de fermentation lente naturelle.</p>
+          </div>
           <div class="card-footer">
-            <div class="card-price">1,80€ <small>/ unidad</small></div>
-            <button class="card-add" onclick="addToast('Baguette Tradition')" title="Añadir al carrito">+</button>
+            <span class="card-price">3.50 €</span>
+            <button class="card-add" onclick="addToCart('Baguette Rétro', 3.50)"><i class="fa-solid fa-plus"></i></button>
           </div>
         </div>
       </div>
 
-      <div class="product-card" data-category="pastry">
-        <div class="card-img" style="background:linear-gradient(145deg,#fde8c0,#f5c878)">
-          <span class="card-emoji">🥐</span>
+      <!-- Producto 2 -->
+      <div class="product-card" data-category="reposteria">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600" alt="Croissant au Beurre" />
         </div>
         <div class="card-body">
-          <span class="card-tag tag-pastry">Viennoiserie</span>
-          <div class="card-name">Croissant au beurre</div>
-          <div class="card-desc">72 capas de hojaldre con mantequilla AOP, horneado en punto perfecto dorado.</div>
+          <div>
+            <span class="card-tag tag-pastry">Viennoiserie</span>
+            <h3 class="card-name">Croissant au Beurre d'Isigny</h3>
+            <p class="card-desc">Feuilletage d'exception fait maison au beurre d'Appellation d'Origine Protégée.</p>
+          </div>
           <div class="card-footer">
-            <div class="card-price">2,20€ <small>/ unidad</small></div>
-            <button class="card-add" onclick="addToast('Croissant au beurre')" title="Añadir al carrito">+</button>
+            <span class="card-price">2.80 €</span>
+            <button class="card-add" onclick="addToCart('Croissant au Beurre', 2.80)"><i class="fa-solid fa-plus"></i></button>
           </div>
         </div>
       </div>
 
-      <div class="product-card" data-category="cake">
-        <div class="card-img" style="background:linear-gradient(145deg,#f8d8e8,#e8a8c8)">
-          <span class="card-emoji">🎂</span>
+      <!-- Producto 3 -->
+      <div class="product-card" data-category="reposteria">
+        <div class="card-img-container">
+          <img src="https://images.unsplash.com/photo-1509456592764-5a948e3d10f9?q=80&w=600" alt="Éclair au Chocolat" />
         </div>
         <div class="card-body">
-          <span class="card-tag tag-cake">Pastelería</span>
-          <div class="card-name">Tarte aux Fraises</div>
-          <div class="card-desc">Crema pastelera de vainilla bourbon, fresas de temporada sobre masa sablée artesana.</div>
+          <div>
+            <span class="card-tag tag-pastry">Pâtisserie</span>
+            <h3 class="card-name">Éclair au Chocolat Belge</h3>
+            <p class="card-desc">Pâte à choux traditionnelle fourrée d'une crème pâtissière au chocolat onctueuse.</p>
+          </div>
           <div class="card-footer">
-            <div class="card-price">4,50€ <small>/ porción</small></div>
-            <button class="card-add" onclick="addToast('Tarte aux Fraises')" title="Añadir al carrito">+</button>
+            <span class="card-price">4.20 €</span>
+            <button class="card-add" onclick="addToCart('Éclair au Chocolat', 4.20)"><i class="fa-solid fa-plus"></i></button>
           </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="pastry">
-        <div class="card-img" style="background:linear-gradient(145deg,#f5d8b0,#e8b880)">
-          <span class="card-emoji">🥧</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-pastry">Viennoiserie</span>
-          <div class="card-name">Pain au chocolat</div>
-          <div class="card-desc">Dos barritas de chocolate Valrhona 64% en el centro de nuestro hojaldre clásico.</div>
-          <div class="card-footer">
-            <div class="card-price">2,50€ <small>/ unidad</small></div>
-            <button class="card-add" onclick="addToast('Pain au chocolat')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="bread">
-        <div class="card-img" style="background:linear-gradient(145deg,#e8d8b0,#c8a868)">
-          <span class="card-emoji">🍞</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-bread">Pan</span>
-          <div class="card-name">Pain de campagne</div>
-          <div class="card-desc">Mezcla de trigo y centeno integral, corteza rústica y sabor terroso inconfundible.</div>
-          <div class="card-footer">
-            <div class="card-price">3,80€ <small>/ pieza</small></div>
-            <button class="card-add" onclick="addToast('Pain de campagne')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="special">
-        <div class="card-img" style="background:linear-gradient(145deg,#d8ecd0,#a8c888)">
-          <span class="card-emoji">⭐</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-special">Especial</span>
-          <div class="card-name">Galette des Rois</div>
-          <div class="card-desc">Hojaldre relleno de crema de almendra frangipane, la reina de la Epifanía. Por encargo.</div>
-          <div class="card-footer">
-            <div class="card-price">16,00€ <small>/ ud. 6p</small></div>
-            <button class="card-add" onclick="addToast('Galette des Rois')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="cake">
-        <div class="card-img" style="background:linear-gradient(145deg,#f8d8c0,#e8b090)">
-          <span class="card-emoji">🍰</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-cake">Pastelería</span>
-          <div class="card-name">Éclair au café</div>
-          <div class="card-desc">Pasta choux rellena de crema de café Arabica, glaseado brillante espejo.</div>
-          <div class="card-footer">
-            <div class="card-price">3,20€ <small>/ unidad</small></div>
-            <button class="card-add" onclick="addToast('Éclair au café')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="bread">
-        <div class="card-img" style="background:linear-gradient(145deg,#e8e0c0,#c8c080)">
-          <span class="card-emoji">🥨</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-bread">Pan</span>
-          <div class="card-name">Bretzel artesano</div>
-          <div class="card-desc">Bañado en soda cáustica, sal gruesa de Guérande y horneado en piedra refractaria.</div>
-          <div class="card-footer">
-            <div class="card-price">1,60€ <small>/ unidad</small></div>
-            <button class="card-add" onclick="addToast('Bretzel artesano')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="special">
-        <div class="card-img" style="background:linear-gradient(145deg,#f5e8d8,#e8c8a0)">
-          <span class="card-emoji">🎁</span>
-        </div>
-        <div class="card-body">
-          <span class="card-tag tag-special">Especial</span>
-          <div class="card-name">Cesta regalo gourmet</div>
-          <div class="card-desc">Selección de nuestros mejores productos en caja kraft artesanal. Ideal para regalar.</div>
-          <div class="card-footer">
-            <div class="card-price">28,00€ <small>/ cesta</small></div>
-            <button class="card-add" onclick="addToast('Cesta regalo gourmet')" title="Añadir al carrito">+</button>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /products-grid -->
-
-    <!-- payment methods -->
-    <div class="payment-section reveal">
-      <h3>💳 Métodos de pago aceptados</h3>
-      <div class="payment-methods">
-        <div class="pay-method"><span class="pay-icon">💳</span> Tarjeta crédito / débito</div>
-        <div class="pay-method"><span class="pay-icon">📱</span> Contactless / NFC</div>
-        <div class="pay-method"><span class="pay-icon">💶</span> Efectivo</div>
-        <div class="pay-method"><span class="pay-icon">🏦</span> Transferencia bancaria</div>
-        <div class="pay-method"><span class="pay-icon">📲</span> Bizum</div>
-        <div class="pay-method"><span class="pay-icon">🅿️</span> PayPal</div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ══════════════ RESERVAS ══════════════ -->
-  <section id="reservas">
-    <div class="reservas-inner">
-      <!-- info -->
-      <div class="reservas-info reveal-left">
-        <span class="section-label">✦ Réservation</span>
-        <h2 class="section-title">Reserva tu<br/><em>experiencia</em></h2>
-        <p>
-          Reserva una mesa para el desayuno o la merienda, o encarga un pedido 
-          especial para tu celebración. Te preparamos todo con cariño y antelación.
-        </p>
-
-        <div class="reservas-features">
-          <div class="res-feature">
-            <div class="icon">☀️</div>
-            <div class="text">
-              <strong>Desayuno artesanal</strong>
-              <span>Abrimos a las 7:00 – Lunes a Domingo</span>
-            </div>
-          </div>
-          <div class="res-feature">
-            <div class="icon">🎂</div>
-            <div class="text">
-              <strong>Pedidos especiales</strong>
-              <span>Tartas personalizadas con 72h de antelación</span>
-            </div>
-          </div>
-          <div class="res-feature">
-            <div class="icon">🎁</div>
-            <div class="text">
-              <strong>Cestas y regalos</strong>
-              <span>Preparamos cestas gourmet a medida</span>
-            </div>
-          </div>
-          <div class="res-feature">
-            <div class="icon">🚚</div>
-            <div class="text">
-              <strong>Entrega a domicilio</strong>
-              <span>Radio de 10 km – consulta disponibilidad</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- form -->
-      <div class="reservas-form reveal-right">
-        <h3>Hacer una reserva</h3>
-        <p class="form-sub">Rellena el formulario y te confirmaremos en menos de 2 horas.</p>
-
-        <div id="formContainer">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">Nombre</label>
-              <input type="text" id="fname" placeholder="Henri" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Apellido</label>
-              <input type="text" id="lname" placeholder="Dubois" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="tu@email.com" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Teléfono</label>
-              <input type="tel" id="phone" placeholder="+34 600 000 000" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fecha">Fecha</label>
-              <input type="date" id="fecha" required />
-            </div>
-            <div class="form-group">
-              <label for="hora">Hora</label>
-              <input type="time" id="hora" min="07:00" max="20:00" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="personas">Personas</label>
-              <select id="personas">
-                <option>1 persona</option>
-                <option>2 personas</option>
-                <option>3 personas</option>
-                <option>4 personas</option>
-                <option>5 o más</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="tipo">Tipo de reserva</label>
-              <select id="tipo">
-                <option>Desayuno / brunch</option>
-                <option>Merienda</option>
-                <option>Pedido especial</option>
-                <option>Cesta regalo</option>
-                <option>Tarta personalizada</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="notas">Notas o peticiones especiales</label>
-            <textarea id="notas" placeholder="Alergias, preferencias, fecha de entrega, mensaje de dedicatoria..."></textarea>
-          </div>
-          <button class="btn btn-primary form-submit" onclick="submitForm()">
-            🥐 Confirmar reserva
-          </button>
-        </div>
-
-        <!-- success -->
-        <div class="form-success" id="formSuccess">
-          <div class="success-icon">🎉</div>
-          <h4>¡Reserva recibida!</h4>
-          <p>Te confirmaremos por email en menos de 2 horas. ¡Merci beaucoup!</p>
-          <button class="btn btn-outline" style="margin-top:1.5rem" onclick="resetForm()">Nueva reserva</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ FOOTER ══════════════ -->
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="menu-header">
+      <span class="section-label">Services Exclusifs</span>
+      <h2 class="section-title">À Votre <em>Service</em></h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- Servicio 1 -->
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600" alt="Accès Adapté">
+        </div>
+        <div class="service-body">
+          <div class="service-icon"><i class="fa-solid fa-wheelchair"></i></div>
+          <h3>Accès Adapté</h3>
+          <p>Établissement entièrement accessible avec une rampe d'accès confortable conçue pour les personnes à mobilité réduite.</p>
+        </div>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600" alt="La Terrasse">
+        </div>
+        <div class="service-body">
+          <div class="service-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+          <h3>La Terrasse</h3>
+          <p>Profitez du grand air et d'un bon café chaud sur notre magnifique terrasse extérieure de style parisien.</p>
+        </div>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="service-card">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1607349913338-fca6f7fc42d0?q=80&w=600" alt="À Emporter">
+        </div>
+        <div class="service-body">
+          <div class="service-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+          <h3>À Emporter</h3>
+          <p>Pressé ? Nous préparons soigneusement vos commandes pour un retrait rapide et prioritaire en boutique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS Y FORMAS DE PAGO -->
+  <section id="info-boutique">
+    <div class="info-boutique-inner">
+      <!-- Horaires -->
+      <div class="info-box">
+        <h3><i class="fa-regular fa-clock"></i> Horaires d'Ouverture</h3>
+        <div class="horarios-list">
+          <div class="horario-row">
+            <span>Lundi</span>
+            <span>06:30 – 21:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Mardi</span>
+            <span>06:30 – 21:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Mercredi</span>
+            <span>06:30 – 21:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Jeudi</span>
+            <span>06:30 – 21:00</span>
+          </div>
+          <div class="horario-row closed">
+            <span>Vendredi</span>
+            <span>Fermé</span>
+          </div>
+          <div class="horario-row">
+            <span>Samedi</span>
+            <span>06:30 – 21:00</span>
+          </div>
+          <div class="horario-row">
+            <span>Dimanche</span>
+            <span>06:30 – 21:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Options de paiement -->
+      <div class="info-box">
+        <h3><i class="fa-solid fa-credit-card"></i> Options de Paiement</h3>
+        <div class="paiments-grid">
+          <div class="paiment-card">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <span>Espèces</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-solid fa-wifi"></i>
+            <span>Sans contact</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <span>MasterCard</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-solid fa-ticket-simple"></i>
+            <span>Ticket Resto®</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-brands fa-cc-visa"></i>
+            <span>VISA</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Carte resto</span>
+          </div>
+          <div class="paiment-card">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Carte de débit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (image_4c043e.png) -->
+  <section id="contact-cards">
+    <div class="contact-grid-boxes">
+      <!-- Nous trouver -->
+      <div class="contact-card-box" onclick="window.open('https://www.google.com/maps/search/?api=1&query=6+rue+de+Paris,+92110+Clichy,+France', '_blank')">
+        <div class="contact-box-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h4 class="contact-box-title">Nous trouver</h4>
+        <div class="contact-box-val">
+          6 rue de Paris<br>
+          92110 Clichy<br>
+          France
+        </div>
+      </div>
+
+      <!-- Nous contacter par e-mail -->
+      <div class="contact-card-box" onclick="window.location.href='mailto:lafourneedupalais@gmail.com?subject=Demande%20de%20renseignement%20-%20La%20Fourn%C3%A9e%20du%20Palais'">
+        <div class="contact-box-icon"><i class="fa-solid fa-envelope"></i></div>
+        <h4 class="contact-box-title">Nous contacter par e-mail</h4>
+        <div class="contact-box-val">
+          lafourneedupalais@gmail.com
+        </div>
+      </div>
+
+      <!-- Nous contacter par téléphone -->
+      <div class="contact-card-box" onclick="window.location.href='tel:+33157640655'">
+        <div class="contact-box-icon"><i class="fa-solid fa-phone"></i></div>
+        <h4 class="contact-box-title">Nous contacter par téléphone</h4>
+        <div class="contact-box-val">
+          +33157640655
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div id="cart-sidebar">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-basket-shopping"></i> Votre Panier</h3>
+      <button class="cart-close" onclick="toggleCart()">&times;</button>
+    </div>
+
+    <!-- Items -->
+    <div class="cart-items-container" id="cart-items">
+      <p class="text-stone-400 text-sm text-center py-8">Votre panier est vide.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span>Total:</span>
+        <span id="cart-subtotal">0.00 €</span>
+      </div>
+
+      <div class="pickup-indicator">
+        <i class="fa-regular fa-clock"></i>
+        <span>Prêt pour retrait à environ : <strong id="clock-target">--:--</strong></span>
+      </div>
+
+      <button id="checkout-trigger-btn" onclick="openCheckoutForm()" class="btn btn-primary" style="justify-content: center; width:100%" disabled>
+        Procéder au Paiement par Carte
+      </button>
+
+      <!-- Secure Payment Form -->
+      <div class="checkout-form" id="secure-payment-box">
+        <input type="text" placeholder="Numéro de carte (simulé)" maxlength="19">
+        <div style="display:flex; gap: 0.5rem;">
+          <input type="text" placeholder="MM/AA" style="width: 50%" maxlength="5">
+          <input type="password" placeholder="CVV" style="width: 50%" maxlength="4">
+        </div>
+        <button onclick="processPaymentAction()" class="btn btn-primary" style="background: var(--sage); justify-content: center; width: 100%; margin-top: 0.5rem;">
+          Confirmer la Transaction
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGAL MODAL -->
+  <div class="legal-modal" id="legal-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modal-title">Titre</h3>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Text dynamic -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-msg">Article mis à jour</span>
+  </div>
+
+  <!-- FOOTER -->
   <footer id="footer">
-    <div class="footer-inner">
-
-      <!-- brand -->
-      <div class="footer-brand">
-        <div class="logo-name">La Maison Dorée</div>
-        <div class="logo-sub">Boulangerie Artisanale</div>
-        <p>Más de tres décadas horneando con pasión y tradición francesa en el corazón de la ciudad.</p>
-        <div class="footer-socials">
-          <a href="#" class="social-btn" title="Instagram">📸</a>
-          <a href="#" class="social-btn" title="Facebook">📘</a>
-          <a href="#" class="social-btn" title="TikTok">🎵</a>
-          <a href="#" class="social-btn" title="WhatsApp">💬</a>
-        </div>
+    <div class="footer-content">
+      <div class="footer-links">
+        <button onclick="openModal('mentions')">MENTIONS LÉGALES</button>
+        <button onclick="openModal('protection')">PROTECTION DES DONNÉES</button>
+        <button onclick="openModal('cookies')">PARAMÈTRES DES COOKIES</button>
       </div>
-
-      <!-- nav links -->
-      <div class="footer-col">
-        <h4>Navegar</h4>
-        <ul>
-          <li><a href="#hero">Inicio</a></li>
-          <li><a href="#about">Nuestra historia</a></li>
-          <li><a href="#menu">Carta de productos</a></li>
-          <li><a href="#reservas">Reservas</a></li>
-          <li><a href="#footer">Contacto</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; 2026 <strong>La Fournée du Palais</strong>. Tous droits réservés. Clichy, France.</p>
       </div>
-
-      <!-- horarios -->
-      <div class="footer-col">
-        <h4>Horarios</h4>
-        <div class="horarios">
-          <div class="horario-row today">
-            <span class="hor-day">Lun – Vie</span>
-            <span class="hor-time">7:00 – 20:00</span>
-          </div>
-          <div class="horario-row">
-            <span class="hor-day">Sábado</span>
-            <span class="hor-time">7:00 – 21:00</span>
-          </div>
-          <div class="horario-row">
-            <span class="hor-day">Domingo</span>
-            <span class="hor-time">8:00 – 15:00</span>
-          </div>
-          <div class="horario-row">
-            <span class="hor-day">Festivos</span>
-            <span class="hor-time">Consultar</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- contacto -->
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <!-- dirección – abre Google Maps -->
-        <a href="https://maps.google.com/?q=Rue+de+Rivoli+1,+Paris" target="_blank" rel="noopener">
-          <div class="contact-item">
-            <div class="ci-icon">📍</div>
-            <div class="ci-text">
-              <span class="ci-label">Dirección</span>
-              <span class="ci-val">Calle Mayor 12, Madrid</span>
-            </div>
-          </div>
-        </a>
-        <!-- teléfono – inicia llamada -->
-        <a href="tel:+34912345678">
-          <div class="contact-item">
-            <div class="ci-icon">📞</div>
-            <div class="ci-text">
-              <span class="ci-label">Teléfono</span>
-              <span class="ci-val">+34 912 345 678</span>
-            </div>
-          </div>
-        </a>
-        <!-- email – abre cliente de correo -->
-        <a href="mailto:hola@lamaisondoree.es?subject=Consulta%20Boulangerie">
-          <div class="contact-item">
-            <div class="ci-icon">✉️</div>
-            <div class="ci-text">
-              <span class="ci-label">Email</span>
-              <span class="ci-val">hola@lamaisondoree.es</span>
-            </div>
-          </div>
-        </a>
-        <!-- WhatsApp -->
-        <a href="https://wa.me/34912345678?text=Hola,%20me%20interesa%20una%20reserva" target="_blank" rel="noopener">
-          <div class="contact-item">
-            <div class="ci-icon">💬</div>
-            <div class="ci-text">
-              <span class="ci-label">WhatsApp</span>
-              <span class="ci-val">Escríbenos ahora</span>
-            </div>
-          </div>
-        </a>
-      </div>
-
-    </div><!-- /footer-inner -->
-
-    <div class="footer-bottom">
-      <span>© 2024 <strong>La Maison Dorée</strong> – Todos los derechos reservados</span>
-      <span>Hecho con ❤️ y harina de trigo ecológico</span>
     </div>
   </footer>
 
-  <!-- back to top -->
-  <button class="back-top" id="backTop" onclick="scrollToTop()" aria-label="Volver arriba">▲</button>
-
-  <!-- toast notification -->
-  <div class="toast" id="toast">
-    <span class="toast-icon">🛒</span>
-    <span id="toastMsg">Añadido al pedido</span>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       JAVASCRIPT
-  ══════════════════════════════════════════ -->
   <script>
-    /* ── NAVBAR scroll effect ── */
-    const navbar = document.getElementById('navbar');
+    // NAVBAR SCROLL EFFECT
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-      document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     });
 
-    /* ── HAMBURGER / mobile menu ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-
-    function closeMenu() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
+    // MOBILE MENU
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const burger = document.querySelector('.hamburger');
+      menu.classList.toggle('open');
+      burger.classList.toggle('open');
     }
 
-    /* ── SCROLL REVEAL ── */
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
+    // WEB APPLICATION LOGIC (CART)
+    let cart = [];
+
+    function toggleCart() {
+      const sidebar = document.getElementById('cart-sidebar');
+      sidebar.classList.toggle('open');
+      updatePickupTime();
+    }
+
+    function filterCategory(cat) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (cat === 'todos' || card.getAttribute('data-category') === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
 
-    /* ── PRODUCT FILTER TABS ── */
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.product-card').forEach((card, i) => {
-          const show = filter === 'all' || card.dataset.category === filter;
-          if (show) {
-            card.classList.remove('hidden');
-            card.style.animationDelay = (i * 0.06) + 's';
-            card.style.animation = 'none';
-            // re-trigger animation
-            void card.offsetWidth;
-            card.style.animation = '';
-          } else {
-            card.classList.add('hidden');
-          }
-        });
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      renderCart();
+      showToast(`"${name}" ajouté au panier !`);
+    }
+
+    function changeQty(name, amount) {
+      const item = cart.find(i => i.name === name);
+      if (item) {
+        item.qty += amount;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.name !== name);
+        }
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const countBadge = document.getElementById('cart-count');
+      const subtotalText = document.getElementById('cart-subtotal');
+      const checkoutBtn = document.getElementById('checkout-trigger-btn');
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p class="text-stone-400 text-sm text-center py-8">Votre panier est vide.</p>`;
+        countBadge.classList.add('hidden');
+        subtotalText.innerText = "0.00 €";
+        checkoutBtn.disabled = true;
+        document.getElementById('secure-payment-box').classList.remove('active');
+        return;
+      }
+
+      countBadge.classList.remove('hidden');
+      checkoutBtn.disabled = false;
+
+      let totalItems = 0;
+      let subtotal = 0;
+      container.innerHTML = "";
+
+      cart.forEach(item => {
+        totalItems += item.qty;
+        subtotal += (item.price * item.qty);
+
+        container.innerHTML += `
+          <div class="cart-item">
+            <div class="cart-item-details">
+              <h4>${item.name}</h4>
+              <p>${item.price.toFixed(2)} € / u</p>
+            </div>
+            <div class="cart-qty-ctrl">
+              <button onclick="changeQty('${item.name}', -1)">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty('${item.name}', 1)">+</button>
+            </div>
+          </div>
+        `;
       });
-    });
 
-    /* ── TOAST notification ── */
-    let toastTimer;
-    function addToast(name) {
-      clearTimeout(toastTimer);
+      countBadge.innerText = totalItems;
+      subtotalText.innerText = `${subtotal.toFixed(2)} €`;
+      updatePickupTime();
+    }
+
+    function updatePickupTime() {
+      if (cart.length === 0) return;
+      const now = new Date();
+      now.setMinutes(now.getMinutes() + 18);
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('clock-target').innerText = `${hours}:${minutes}`;
+    }
+
+    function openCheckoutForm() {
+      const paymentBox = document.getElementById('secure-payment-box');
+      paymentBox.classList.toggle('active');
+    }
+
+    function processPaymentAction() {
+      showToast("Succès ! Paiement simulé validé. Votre commande est réservée au four !");
+      cart = [];
+      renderCart();
+      toggleCart();
+    }
+
+    function showToast(msg) {
       const toast = document.getElementById('toast');
-      document.getElementById('toastMsg').textContent = `"${name}" añadido al pedido`;
+      document.getElementById('toast-msg').innerText = msg;
       toast.classList.add('show');
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
     }
 
-    /* ── FORM SUBMIT ── */
-    function submitForm() {
-      const fname  = document.getElementById('fname').value.trim();
-      const email  = document.getElementById('email').value.trim();
-      const fecha  = document.getElementById('fecha').value;
-      const hora   = document.getElementById('hora').value;
+    // MODAL TEXTS & FUNCTIONALITIES
+    const legalTexts = {
+      mentions: `
+        <p class="font-bold">Éditeur du site :</p>
+        <p>La Fournée du Palais - Boutique En Ligne.</p>
+        <p class="font-bold">Adresse de l'établissement :</p>
+        <p>6 rue de Paris, 92110 Clichy, France.</p>
+        <p class="font-bold">Contact :</p>
+        <p>E-mail : lafourneedupalais@gmail.com | Téléphone : +33157640655</p>
+        <p class="italic text-stone-500 mt-4">(Vous pouvez modifier cette section des mentions légales dans le code source si nécessaire).</p>
+      `,
+      protection: `
+        <p class="font-bold">Traitement des Données Personnelles :</p>
+        <p>Toutes les informations que vous fournissez lors des transactions simulées restent purement locales et d'entraînement pour ce projet. Aucune donnée n'est envoyée à l'extérieur ou enregistrée dans une base marketing.</p>
+      `,
+      cookies: `
+        <p class="font-bold">Utilisation des cookies :</p>
+        <p>Ce site utilise uniquement des cookies essentiels et techniques de navigation :</p>
+        <ul>
+          <li><strong>Panier d'achat :</strong> Utilisé uniquement pour sauvegarder les créations boulangères sélectionnées.</li>
+        </ul>
+        <p class="mt-2 text-stone-500">Aucun traceur tiers ou cookie publicitaire n'est utilisé sur notre boutique.</p>
+      `
+    };
 
-      if (!fname || !email || !fecha || !hora) {
-        alert('Por favor, completa los campos obligatorios: nombre, email, fecha y hora.');
-        return;
+    function openModal(type) {
+      const modal = document.getElementById('legal-modal');
+      const title = document.getElementById('modal-title');
+      const body = document.getElementById('modal-body-content');
+
+      if (type === 'mentions') {
+        title.innerText = "MENTIONS LÉGALES";
+        body.innerHTML = legalTexts.mentions;
+      } else if (type === 'protection') {
+        title.innerText = "PROTECTION DES DONNÉES";
+        body.innerHTML = legalTexts.protection;
+      } else if (type === 'cookies') {
+        title.innerText = "PARAMÈTRES DES COOKIES";
+        body.innerHTML = legalTexts.cookies;
       }
-      // email basic validation
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Por favor, introduce un email válido.');
-        return;
-      }
-      // simulate sending
-      document.getElementById('formContainer').style.display = 'none';
-      const success = document.getElementById('formSuccess');
-      success.style.display = 'block';
+
+      modal.classList.add('open');
     }
 
-    function resetForm() {
-      document.getElementById('formContainer').style.display = 'block';
-      document.getElementById('formSuccess').style.display = 'none';
-      ['fname','lname','email','phone','notas'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
+    function closeModal() {
+      document.getElementById('legal-modal').classList.remove('open');
     }
-
-    /* ── BACK TO TOP ── */
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    /* ── Set min date on date input ── */
-    (function setMinDate() {
-      const d = new Date();
-      const pad = n => String(n).padStart(2,'0');
-      document.getElementById('fecha').min =
-        `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-    })();
   </script>
 </body>
 </html>
